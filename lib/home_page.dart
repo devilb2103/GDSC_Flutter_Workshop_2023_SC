@@ -13,49 +13,70 @@ class HomePage extends StatelessWidget {
           color: backgroundColor,
           width: double.maxFinite,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                "Data",
-                style: TextStyle(
-                    color: textColor,
-                    fontSize: 21,
-                    fontWeight: FontWeight.w200),
-              ),
-              Text(
-                "10",
-                style: TextStyle(
-                    color: themeColor,
-                    fontSize: 72,
-                    fontWeight: FontWeight.w400),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  FloatingActionButton(
-                    backgroundColor: themeColor,
-                    onPressed: () {},
-                    child: Icon(Icons.add),
-                  ),
-                  SizedBox(
-                    width: 21,
-                  ),
-                  FloatingActionButton.extended(
-                      backgroundColor: themeColor,
-                      onPressed: () {},
-                      label: Text("Reset")),
-                  SizedBox(
-                    width: 21,
-                  ),
-                  FloatingActionButton(
-                    backgroundColor: themeColor,
-                    onPressed: () {},
-                    child: Icon(Icons.add),
-                  ),
-                ],
-              )
+              counterDisplay(),
+              buttonRow(),
             ],
           )),
+    );
+  }
+
+  Widget counterDisplay() {
+    return Column(
+      children: [
+        Text(
+          "Counter",
+          style: TextStyle(
+              color: textColor, fontSize: 21, fontWeight: FontWeight.w100),
+        ),
+        Text(
+          "10",
+          style: TextStyle(
+              color: themeColor, fontSize: 120, fontWeight: FontWeight.w600),
+        ),
+      ],
+    );
+  }
+
+  Widget buttonRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+          height: 60,
+          width: 60,
+          child: FloatingActionButton(
+            backgroundColor: themeColor,
+            onPressed: () {},
+            child: Icon(Icons.remove),
+          ),
+        ),
+        SizedBox(
+          width: 21,
+        ),
+        SizedBox(
+          height: 60,
+          width: 120,
+          child: FloatingActionButton.extended(
+              backgroundColor: themeColor,
+              onPressed: () {},
+              label: Container(child: Text("Reset"))),
+        ),
+        SizedBox(
+          width: 21,
+        ),
+        SizedBox(
+          height: 60,
+          width: 60,
+          child: FloatingActionButton(
+            backgroundColor: themeColor,
+            onPressed: () {},
+            child: Icon(Icons.add),
+          ),
+        ),
+      ],
     );
   }
 }
