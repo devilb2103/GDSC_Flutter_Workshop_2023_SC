@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planned_app/Cubits/Counter%20Cubit/counter_cubit.dart';
 import 'package:planned_app/constants.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,7 +19,7 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               counterDisplay(),
-              buttonRow(),
+              buttonRow(context),
             ],
           )),
     );
@@ -40,7 +42,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget buttonRow() {
+  Widget buttonRow(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -49,7 +51,9 @@ class HomePage extends StatelessWidget {
           width: 60,
           child: FloatingActionButton(
             backgroundColor: themeColor,
-            onPressed: () {},
+            onPressed: () {
+              context.read<CounterCubit>().decrementCounter();
+            },
             child: Icon(Icons.remove),
           ),
         ),
@@ -61,7 +65,9 @@ class HomePage extends StatelessWidget {
           width: 120,
           child: FloatingActionButton.extended(
               backgroundColor: themeColor,
-              onPressed: () {},
+              onPressed: () {
+                context.read<CounterCubit>().resetCounter();
+              },
               label: Container(child: Text("Reset"))),
         ),
         SizedBox(
@@ -72,7 +78,9 @@ class HomePage extends StatelessWidget {
           width: 60,
           child: FloatingActionButton(
             backgroundColor: themeColor,
-            onPressed: () {},
+            onPressed: () {
+              context.read<CounterCubit>().incrementCounter();
+            },
             child: Icon(Icons.add),
           ),
         ),

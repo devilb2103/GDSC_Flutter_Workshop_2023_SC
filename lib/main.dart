@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planned_app/Cubits/Counter%20Cubit/counter_cubit.dart';
 import 'package:planned_app/home_page.dart';
 
 void main() {
@@ -13,7 +15,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: BlocProvider(
+        create: (context) => CounterCubit(),
+        child: HomePage(),
+      ),
     );
   }
 }
