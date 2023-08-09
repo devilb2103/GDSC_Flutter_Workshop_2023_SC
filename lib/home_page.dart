@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -18,14 +20,23 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              counterDisplay(),
+              BlocBuilder<CounterCubit, CounterState>(
+                builder: (context, state) {
+                  print("ui updated");
+                  if (state is CounterInitialState) {
+                    return counterDisplay(context);
+                  } else {
+                    return counterDisplay(context);
+                  }
+                },
+              ),
               buttonRow(context),
             ],
           )),
     );
   }
 
-  Widget counterDisplay() {
+  Widget counterDisplay(BuildContext context) {
     return Column(
       children: [
         Text(
@@ -34,7 +45,7 @@ class HomePage extends StatelessWidget {
               color: textColor, fontSize: 21, fontWeight: FontWeight.w100),
         ),
         Text(
-          "10",
+          context.read<CounterCubit>().counter.toString(),
           style: TextStyle(
               color: themeColor, fontSize: 120, fontWeight: FontWeight.w600),
         ),

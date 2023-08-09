@@ -4,6 +4,10 @@ abstract class CounterState {
   const CounterState();
 }
 
-class CounterUpdateState extends CounterState {
-  const CounterUpdateState();
+class CounterUpdatingState extends CounterState {
+  const CounterUpdatingState();
+}
+
+class CounterInitialState extends CounterState {
+  const CounterInitialState();
 }
