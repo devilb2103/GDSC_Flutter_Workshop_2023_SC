@@ -16,6 +16,9 @@ class CounterCubit extends Cubit<CounterState> {
   }
 
   void decrementCounter() {
+    if (counter < 1) {
+      return;
+    }
     emit(const CounterUpdatingState());
     counter--;
     print(counter);
@@ -23,6 +26,9 @@ class CounterCubit extends Cubit<CounterState> {
   }
 
   void resetCounter() {
+    if (counter <= 0) {
+      return;
+    }
     emit(const CounterUpdatingState());
     counter = 0;
     print(counter);
