@@ -42,8 +42,6 @@ flutter pub get
 flutter run
 ```
 
-<br>
-
 ## BLoC Overview
 
 BLoC (Business Logic Component) is a state management pattern that separates the presentation layer from the business logic. In this app, the BLoC pattern is used to manage the counter state. The BLoC is responsible for handling events, updating the state, and exposing the state changes to the UI.
