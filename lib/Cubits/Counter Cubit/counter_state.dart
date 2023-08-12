@@ -1,5 +1,6 @@
 part of 'counter_cubit.dart';
 
+// abstract classes representing states of the counter cubit
 abstract class CounterState {
   const CounterState();
 }

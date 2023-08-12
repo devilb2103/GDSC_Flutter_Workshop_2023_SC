@@ -14,10 +14,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // remove the debug banner
       debugShowCheckedModeBanner: false,
+
+      // wrap the homepage with the blockprovider widget supporting countercubit so that
+      // all widgets under homepage can listen to state changes caused by that cubit
       home: BlocProvider(
         create: (context) => CounterCubit(),
-        child: HomePage(),
+        child: const HomePage(),
       ),
     );
   }
